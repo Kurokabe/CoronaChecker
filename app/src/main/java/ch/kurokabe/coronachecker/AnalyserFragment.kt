@@ -6,18 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 /**
  * A simple [Fragment] subclass.
  */
-class AnalyserFragment : Fragment() {
+class AnalyserFragment : Fragment(), MicListener{
+
+    var txtValue : TextView? = null
+
+    override fun onUpdate(incomingValue: Int) {
+        activity?.runOnUiThread {
+            txtValue?.text = incomingValue.toString()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_analyser, container, false)
+        var v = inflater.inflate(R.layout.fragment_analyser, container, false)
+        txtValue = v.findViewById(R.id.micValue)
+        return v
     }
 
 
