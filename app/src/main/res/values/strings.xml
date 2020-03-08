@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="instruction">Cough %1$d times on your microphone</string>
+    <string name="analyzing">Analyzing...</string>
+
 </resources>

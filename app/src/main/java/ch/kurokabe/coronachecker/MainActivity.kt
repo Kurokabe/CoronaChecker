@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         var selectedFragment = AnalyserFragment()
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
 
-        microphone?.setMicListener(selectedFragment)
+        microphone?.addListener(selectedFragment)
     }
 
     private fun initRecorder()

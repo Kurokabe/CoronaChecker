@@ -10,19 +10,18 @@ import androidx.core.content.ContextCompat.getSystemService
 
 
 class Microphone(myAudioManager: AudioManager) {
-    private var listener: MicListener? = null
+    private var listeners: MutableList<MicListener> = ArrayList()
 
     private var myAudioManager: AudioManager? = null
     private var mThread: Thread? = null
-    private var coughThreshold = 30000
     private var isRunning = true
 
-    fun setMicListener(listener: MicListener) {
-        this.listener = listener
+    fun addListener(listener: MicListener) {
+        listeners.add(listener)
     }
 
-    fun removeListener() {
-        this.listener = null
+    fun removeListener(listener: MicListener) {
+        listeners.remove(listener)
     }
 
     fun startListening()
@@ -50,25 +49,15 @@ class Microphone(myAudioManager: AudioManager) {
 
         myRecord.startRecording()
 
-        var isCoughing = false
-        var startTime = System.nanoTime()
-
         while (isRunning) {
             val bufferResults = myRecord.read(buffer, 0, bufferSize / 4)
             for (i in 0 until bufferResults) {
-                val elapsed = (System.nanoTime() - startTime) / 1000000
 
                 val currentVal = buffer[i].toInt()
-                if (currentVal > coughThreshold) {
-                    isCoughing = true
-                    startTime = System.nanoTime()
+                for (listener in listeners)
+                {
+                    listener?.onUpdate(currentVal)
                 }
-
-                if (elapsed > 3000) {
-                    isCoughing = false
-                }
-
-                listener?.onUpdate(currentVal)
 
             }
 
