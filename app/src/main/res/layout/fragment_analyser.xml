@@ -16,18 +16,34 @@
         android:textAlignment="center"
         android:textSize="36sp" />
 
-    <ch.kurokabe.coronachecker.AudioVisualizer
-        android:id="@+id/audioVisualizer"
+    <FrameLayout
         android:layout_width="380dp"
         android:layout_height="380dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center">
 
-    <pl.droidsonroids.gif.GifTextView
-        android:id="@+id/gifTextView"
-        android:layout_width="380dp"
-        android:layout_height="380dp"
-        android:layout_gravity="center"
-        android:background="@drawable/analyzing"
-        android:visibility="gone"
-        />
+        <ch.kurokabe.coronachecker.AudioVisualizer
+            android:id="@+id/audioVisualizer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+        <pl.droidsonroids.gif.GifTextView
+            android:id="@+id/gifTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/analyzing"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtPercentage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="36sp" />
+
+    </FrameLayout>
+
+
 </FrameLayout>

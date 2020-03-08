@@ -10,18 +10,18 @@ import androidx.core.content.ContextCompat.getSystemService
 
 
 class Microphone(myAudioManager: AudioManager) {
-    private var listeners: MutableList<MicListener> = ArrayList()
+    private var listener: MicListener? = null
 
     private var myAudioManager: AudioManager? = null
     private var mThread: Thread? = null
     private var isRunning = true
 
-    fun addListener(listener: MicListener) {
-        listeners.add(listener)
+    fun setListener(listener: MicListener) {
+        this.listener = listener
     }
 
-    fun removeListener(listener: MicListener) {
-        listeners.remove(listener)
+    fun removeListener() {
+        this.listener = null
     }
 
     fun startListening()
@@ -54,10 +54,7 @@ class Microphone(myAudioManager: AudioManager) {
             for (i in 0 until bufferResults) {
 
                 val currentVal = buffer[i].toInt()
-                for (listener in listeners)
-                {
-                    listener?.onUpdate(currentVal)
-                }
+                listener?.onUpdate(currentVal)
 
             }
 

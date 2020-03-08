@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.media.AudioManager
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -12,7 +13,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AnalyserFragment.OnFragmentInteractionListener, ResultFragment.OnFragmentResultInteractionListener {
 
     lateinit var mAdView : AdView
 
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         var selectedFragment = AnalyserFragment()
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
 
-        microphone?.addListener(selectedFragment)
+        microphone?.setListener(selectedFragment)
     }
 
     private fun initRecorder()
@@ -128,6 +129,16 @@ class MainActivity : AppCompatActivity() {
         microphone?.stopListening()
     }
 
+    override fun onResultClosed() {
+        var selectedFragment = AnalyserFragment()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, selectedFragment).commit()
+        microphone?.setListener(selectedFragment)
+        startRecording()
+    }
 
+    override fun onAnalysisOver() {
+        stopRecording()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ResultFragment()).commit()
+    }
 
 }
