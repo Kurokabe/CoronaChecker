@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import java.util.*
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
 
 
 /**
@@ -22,7 +24,7 @@ import android.widget.Button
 class ResultFragment : Fragment() {
     private var listener: OnFragmentResultInteractionListener? = null
     private var r = Random()
-    private var chanceOfHavingCorona = 1/1000f
+    private var chanceOfHavingCorona = 1/2f
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,11 +34,17 @@ class ResultFragment : Fragment() {
         var v = inflater.inflate(R.layout.fragment_result, container, false)
 
         var hasCorona = testForCorona()
-        if (hasCorona)
-            v.findViewById<TextView>(R.id.txtPositive).visibility = View.VISIBLE
-        else
-            v.findViewById<TextView>(R.id.txtNegative).visibility = View.VISIBLE
 
+        if (hasCorona){
+            v.findViewById<TextView>(R.id.txtPositive).text = getString(R.string.coronaPositive)
+            v.findViewById<LinearLayout>(R.id.main_layout).setBackgroundResource(R.drawable.positive_background)
+            v.findViewById<ImageView>(R.id.imgResult).setImageResource(R.drawable.pos)
+        }
+        else{
+            v.findViewById<TextView>(R.id.txtPositive).text = getString(R.string.coronaNegative)
+            v.findViewById<LinearLayout>(R.id.main_layout).setBackgroundResource(R.drawable.negative_background)
+            v.findViewById<ImageView>(R.id.imgResult).setImageResource(R.drawable.neg)
+        }
 
         val button = v.findViewById(R.id.btnBack) as Button
         button.setOnClickListener{onButtonPressed()}

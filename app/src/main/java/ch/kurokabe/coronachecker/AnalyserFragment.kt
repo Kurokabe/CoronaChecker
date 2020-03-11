@@ -32,7 +32,7 @@ class AnalyserFragment : Fragment(), MicListener, AnalysisEvents{
 
     private var coughThreshold = 30000
     private var waitBetweenCough = 250
-    private val requiredCough = 3
+    private val requiredCough = 1
 
     private var coughNumber = 0
     private var startTime = System.nanoTime()

@@ -1,30 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/positive_background"
+    android:orientation="vertical"
     tools:context=".ResultFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
+
+    <ImageView
+        android:id="@+id/imgResult"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        tools:src="@drawable/pos" />
+
     <TextView
         android:id="@+id/txtPositive"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/coronaPositive"
-        android:visibility="gone"/>
-
-
-    <TextView
-        android:id="@+id/txtNegative"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/coronaNegative"
-        android:visibility="gone"/>
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="45sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back"/>
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_style"
+        android:textColor="@android:color/white"
+        android:text="@string/back" />
 
-</FrameLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
+
+</LinearLayout>

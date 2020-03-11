@@ -7,7 +7,7 @@ class Analyzer {
     private var analysisListeners : MutableList<AnalysisEvents> = ArrayList()
     private var r = Random()
     private val minWait = 25
-    private val maxWait = 300
+    private val maxWait = 150
 
     fun register(listener: AnalysisEvents)
     {
