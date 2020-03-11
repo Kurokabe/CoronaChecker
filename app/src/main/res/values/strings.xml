@@ -2,8 +2,7 @@
     <string name="app_name">CoronaChecker</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="instruction">Cough %1$d times on your microphone</string>
+    <string name="instruction">Cough %1$d times into  your microphone</string>
     <string name="analyzing">Analyzing...</string>
     <string name="coronaPositive">You have the Coronavirus</string>
     <string name="coronaNegative">You don\'t have the Coronavirus</string>
