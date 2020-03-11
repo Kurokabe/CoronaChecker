@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CoronaChecker</string>
+    <string name="analyzing">Analyzing...</string>
+    <string name="back">Back</string>
+    <string name="coronaNegative">You don\'t have the Coronavirus</string>
+    <string name="coronaPositive">You have the Coronavirus</string>
+    <string name="instruction">Cough %1$d times into your microphone</string>
+</resources>
